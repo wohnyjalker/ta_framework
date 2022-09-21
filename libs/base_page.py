@@ -26,7 +26,9 @@ class BasePage:
             ec.visibility_of_element_located((locator.method, locator.location))
         )
 
-    def find_all_present_elements(self, locator: Locator, timeout: Optional[float] = None):
+    def find_all_present_elements(
+        self, locator: Locator, timeout: Optional[float] = None
+    ):
         return WebDriverWait(self.driver, timeout or self.timeout).until(
             ec.presence_of_all_elements_located((locator.method, locator.location))
         )
