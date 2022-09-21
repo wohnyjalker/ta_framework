@@ -19,9 +19,7 @@ def test_login(driver):
 
 @pytest.mark.no_login
 def test_login_2(driver):
-    login_page = LoginPage(driver).load_from_url(
-        "http://automationpractice.com/index.php?controller=authentication&back=my-account"
-    )
+    login_page = LoginPage(driver).load_from_url(config.site_login_page)
     my_account_page = login_page.log_in(config.user_email, config.email_password)
     assert my_account_page.get_logged_user() == "* *"
 
@@ -30,3 +28,11 @@ def test_login_using_3(driver):
     """This test is using log_in autouse fixture"""
     my_account_page = MyAccountPage(driver)
     assert my_account_page.get_logged_user() == "* *"
+
+
+@pytest.mark.no_login
+def test_wrong_credentials(driver):
+    login_page = LoginPage(driver).load_from_url(config.site_login_page)
+    login_page.fill_login_form("wrong@user.com", "wrong_password")
+    login_page.get_submit_button().click()
+    assert login_page.get_error_message() == "Authentication failed."
