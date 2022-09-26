@@ -5,6 +5,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    environment:
+      - IS_REMOTE=true
     env_file:
       - .env
     working_dir: /ta_framework
