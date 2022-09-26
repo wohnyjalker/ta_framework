@@ -15,6 +15,6 @@ site_login_page = (
 
 # TA config
 browser = getenv("BROWSER", "chrome")
-is_remote = getenv("IS_REMOTE")
+is_remote = getenv("IS_REMOTE", "")
 remote_address = getenv("REMOTE_ADDRESS", "http://selenium-hub:4444/wd/hub")
 global_timeout = 15
