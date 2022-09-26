@@ -1,7 +1,6 @@
 version: "3"
 
 services:
-
   python:
     build:
       context: .
@@ -11,7 +10,7 @@ services:
     working_dir: /ta_framework
 
   chrome:
-    image: selenium/node-chrome:dev
+    image: selenium/node-chrome:latest
     shm_size: 2gb
     depends_on:
       - selenium-hub
@@ -21,8 +20,7 @@ services:
       - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
 
   selenium-hub:
-    image: selenium/hub:latest
-    container_name: selenium-hub
+    image: selenium/hub:4.3.0
     ports:
       - "4442:4442"
       - "4443:4443"
