@@ -1,7 +1,5 @@
 #!/bin/bash
 
-eval $(minikube -p minikube docker-env)
-
 docker_compose="docker-compose -f docker-compose.yaml"
 nodes_number=4
 
@@ -19,7 +17,8 @@ scale_and_run_grid () {
 }
 
 run_test () {
-  $docker_compose run --rm python sh -c "pytest /ta_framework/tests -n $nodes_number -v -l -ra"
+  $docker_compose run --rm python sh -c "pytest /ta_framework/tests -n $nodes_number -v -ra"
+#  $docker_compose run --rm python sh -c "pytest /ta_framework/tests -n $nodes_number -v -l -ra"
 }
 
 put_dockers_down
