@@ -22,12 +22,14 @@ def test_login_2(driver):
     login_page = LoginPage(driver).load_from_url(config.site_login_page)
     my_account_page = login_page.log_in(config.user_email, config.email_password)
     assert my_account_page.get_logged_user() == "* *"
+    my_account_page.get_sign_out_button().click()
 
 
 def test_login_using_3(driver):
     """This test is using log_in autouse fixture"""
     my_account_page = MyAccountPage(driver)
     assert my_account_page.get_logged_user() == "* *"
+    my_account_page.get_sign_out_button().click()
 
 
 @pytest.mark.no_login
