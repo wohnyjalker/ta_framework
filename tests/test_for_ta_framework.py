@@ -1,8 +1,7 @@
-import pytest
-
 import config
-from libs.locator import Locator
+import pytest
 from libs.base_page import BasePage
+from libs.locator import Locator
 from pages.login_page import LoginPage
 from pages.my_account_page import MyAccountPage
 
@@ -12,7 +11,9 @@ def test_login(driver):
     page = BasePage(driver).load_from_url(config.site_url)
     page.find_clickable_element(Locator(".login")).click()
     page.find_visible_element(Locator("#email")).send_keys(config.user_email)
-    page.find_visible_element(Locator("#passwd")).send_keys(config.email_password)
+    page.find_visible_element(Locator("#passwd")).send_keys(
+        config.email_password
+    )
     page.find_clickable_element(Locator("#SubmitLogin")).click()
     assert page.find_visible_element(Locator(".account > span")).text == "* *"
 
@@ -20,7 +21,9 @@ def test_login(driver):
 @pytest.mark.no_login
 def test_login_2(driver):
     login_page = LoginPage(driver).load_from_url(config.site_login_page)
-    my_account_page = login_page.log_in(config.user_email, config.email_password)
+    my_account_page = login_page.log_in(
+        config.user_email, config.email_password
+    )
     assert my_account_page.get_logged_user() == "* *"
     my_account_page.get_sign_out_button().click()
 

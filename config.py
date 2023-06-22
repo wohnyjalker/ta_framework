@@ -2,16 +2,13 @@ from os import getenv
 
 from dotenv import load_dotenv
 
-
 load_dotenv()
 
 # site config
 site_url = getenv("SITE_URL")
 user_email = getenv("USER_EMAIL")
 email_password = getenv("USER_EMAIL_PASSWORD")
-site_login_page = (
-    "http://automationpractice.com/index.php?controller=authentication&back=my-account"
-)
+site_login_page = ""
 
 # TA config
 browser = getenv("BROWSER", "chrome")
