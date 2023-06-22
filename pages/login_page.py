@@ -1,8 +1,7 @@
-from selenium.webdriver.remote.webelement import WebElement
-
 from libs.base_page import BasePage
 from libs.locator import Locator
 from pages.my_account_page import MyAccountPage
+from selenium.webdriver.remote.webelement import WebElement
 
 
 class LoginPage(BasePage):
