@@ -5,13 +5,13 @@ from selenium.webdriver.remote.webelement import WebElement
 
 
 class LoginPage(BasePage):
-    sign_in = Locator(".login")
+    sign_in = Locator(".authorization-link")
     email_input = Locator("#email")
-    password_input = Locator("#passwd")
-    submit_btn = Locator("#SubmitLogin")
-    error_message = Locator(".alert > ol > li")
+    password_input = Locator("#pass")
+    submit_btn = Locator("#send2")
+    error_message = Locator(".message-error > div")
 
-    def fill_login_form(self, email: str, password: str):
+    def fill_login_form(self, email: str, password: str) -> None:
         self.find_visible_element(self.email_input).send_keys(email)
         self.find_visible_element(self.password_input).send_keys(password)
 
