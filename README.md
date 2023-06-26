@@ -2,11 +2,6 @@
 
 This repository contains a test automation framework written in Python. It includes the necessary setup steps and instructions to run the tests using different configurations.
 
-## TODO
-* add Allure Reporting
-* add screenshots on fail
-* add video recording on rerun
-
 ## Setup
 
 1. Clone the repository:
@@ -14,17 +9,29 @@ This repository contains a test automation framework written in Python. It inclu
    ```bash
    git clone https://github.com/wohnyjalker/ta_framework.git test-automation-framework
    cd test-automation-framework
-
-
-2. Copy the .env.example file as .env:
-    ```bash
-    cp .env.example .env
-    ```
+   ```
+2. Create and activate virtual environment:
+   ```bash
+   python3 -m venv venv
+   . venv/bin/activate
+   ```
 
 3. Install the required dependencies:
     ```bash
     pip install -r requirements.txt
     ```
+
+4. Copy the .env.example file as .env:
+    ```bash
+    cp .env.example .env
+    ```
+
+5. (Optional) Add pre-commit hook:
+
+   ```bash
+   pre-commit install
+   ```
+
 
 
 ## Running Tests Locally
@@ -44,3 +51,10 @@ The -n 4 flag specifies the number of parallel workers to use. Adjust the value 
     ```bash
     ./run_tests.sh
     ```
+
+## TODO
+* add Allure Reporting
+* add screenshots on fail
+* add video recording on rerun
+* add page elements abstraction
+* add page components abstraction
