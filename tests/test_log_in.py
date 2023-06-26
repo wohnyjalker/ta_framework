@@ -1,3 +1,6 @@
+import random
+import string
+
 import config
 import pytest
 from pages.login_page import LoginPage
@@ -40,6 +43,9 @@ def test_login_top_message_bar(driver):
 @pytest.mark.no_login
 def test_wrong_credentials(driver):
     login_page = LoginPage(driver).load_from_url(config.site_login_page)
-    login_page.fill_login_form("wrong6@user.com", "wrong_password")
+    # added random email because when same email is used more than once
+    # error related to captcha is shown
+    email = f"{''.join(random.sample(string.ascii_lowercase, 10))}@email.com"
+    login_page.fill_login_form(email, "wrong_password")
     login_page.get_submit_button().click()
     assert login_page.get_error_message() == ERROR_MSG
