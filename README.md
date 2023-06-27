@@ -40,6 +40,10 @@ To run the tests locally, use the following command:
 ```bash
 pytest -n 4
 ```
+or
+```bash
+./run_tests_locally.sh
+```
 The -n 4 flag specifies the number of parallel workers to use. Adjust the value as per your machine's capabilities.
 
 ## Using Docker and Selenium Grid
