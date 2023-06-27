@@ -10,6 +10,8 @@ services:
     env_file:
       - .env
     working_dir: /ta_framework
+    volumes:
+      - ${PWD}/reports:/ta_framework/reports
 
   chrome:
     image: selenium/node-chrome:latest
