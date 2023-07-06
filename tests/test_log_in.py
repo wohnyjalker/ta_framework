@@ -1,5 +1,6 @@
 import random
 import string
+import sys
 
 import config
 import pytest
@@ -35,6 +36,10 @@ def test_login_personal_data_section(driver):
     assert my_account_page.get_logged_user_personal_data() == personal_data
 
 
+@pytest.mark.xfail(
+    reason="TODO: add function/method to wait for top banner,"
+    " watch out for StaleElementReference"
+)
 def test_login_top_message_bar(driver):
     my_account_page = MyAccountPage(driver)
     assert my_account_page.get_logged_user_top_msg() == welcome_message
@@ -49,3 +54,14 @@ def test_wrong_credentials(driver):
     login_page.fill_login_form(email, "wrong_password")
     login_page.get_submit_button().click()
     assert login_page.get_error_message() == ERROR_MSG
+
+
+@pytest.mark.skip(reason="Test case not implemented")
+def test_login_not_implemented_test_func():
+    ...
+
+
+def test_login_skipped_from_inside_of_test_func():
+    if sys.platform == "darwin":
+        pytest.skip(reason="Test cannot run on the MacOS system")
+    assert True
