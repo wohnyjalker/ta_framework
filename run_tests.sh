@@ -17,7 +17,7 @@ scale_and_run_grid () {
 }
 
 run_test () {
-  $docker_compose run --rm python sh -c "pytest /ta_framework/tests -n $nodes_number -v -ra --alluredir=reports"
+  $docker_compose run --rm python sh -c "pytest /ta_framework/tests -n $nodes_number -rxXsva --alluredir=reports"
 }
 
 put_dockers_down
